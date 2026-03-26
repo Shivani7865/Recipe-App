@@ -3,45 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe App</title>
+    <title>Telescript - Recipe App</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <nav>
-            <img src="assets/images/recipelogo.jpg" alt="logo" width="100px" height="97px"/>
-           
-    <form>
-        <input type="text" placeholder="search for recipes....." class="searchBox">
-        <button type="submit" class="searchBtn">Search</button>
-    </form>
+        <nav class="navbar">
+            <div class="nav-brand">
+                <img src="assets/images/recipelogo.jpg" alt="Telescript Logo" />
+                <span class="brand-name">Telescript</span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active" data-section="home"><i class="fa-solid fa-house"></i> Home</a></li>
+                <li><a href="#recipes" class="nav-link" data-section="recipes"><i class="fa-solid fa-utensils"></i> Recipes</a></li>
+                <li><a href="#favourites" class="nav-link" data-section="favourites"><i class="fa-solid fa-heart"></i> Favourites</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="user-greeting" id="userGreeting" style="display:none;">
+                    <span class="greeting-text" id="greetingText"></span>
+                    <button class="btn btn-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
+                </div>
+                <button class="btn btn-login" id="loginBtn"><i class="fa-solid fa-user"></i> Login</button>
+                <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
+            </div>
         </nav>
-        <div class="splash-container">
-            <h1 class="line line1">Craving something amazing? Italian food 🍰</h1>
-            <h2 class="line line2">Let’s find it. Let’s cook it. Let’s enjoy it.</h2>
-            <h3 class="line line3"> Only on Telescript—where every recipe tells a story 💫.</h3>
-          </div>  
-        
     </header>
-    <main>
-    <section>
-        <div class="recipe-container">
-            <h2>Search your favourite recipes</h2>
-            <h2>Let's start ! Hurry Up Guys </h2>
-            <img src="assets/images/chef.png" wiidth="60%" height="350px">
-        </div>
-        <div class="recipe-details">
-            <button type="button" class="recipe-close-btn">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-            <div class="recipe-details-content">
 
+    <div class="modal-overlay" id="authModal">
+        <div class="modal">
+            <button class="modal-close" id="modalClose"><i class="fa-solid fa-xmark"></i></button>
+            <div class="auth-form" id="loginForm">
+                <h2><i class="fa-solid fa-user-lock"></i> Welcome Back</h2>
+                <p class="auth-subtitle">Login to save your favourite recipes</p>
+                <div class="form-group">
+                    <label for="loginEmail"><i class="fa-solid fa-envelope"></i> Email</label>
+                    <input type="email" id="loginEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword"><i class="fa-solid fa-lock"></i> Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter password" required>
+                </div>
+                <button class="btn btn-primary btn-full" id="loginSubmit">Login</button>
+                <p class="auth-switch">Don&#39;t have an account? <a href="#" id="showSignup">Sign Up</a></p>
+            </div>
+            <div class="auth-form" id="signupForm" style="display:none;">
+                <h2><i class="fa-solid fa-user-plus"></i> Create Account</h2>
+                <p class="auth-subtitle">Join Telescript and explore recipes</p>
+                <div class="form-group">
+                    <label for="signupName"><i class="fa-solid fa-user"></i> Name</label>
+                    <input type="text" id="signupName" placeholder="Your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupEmail"><i class="fa-solid fa-envelope"></i> Email</label>
+                    <input type="email" id="signupEmail" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="signupPassword"><i class="fa-solid fa-lock"></i> Password</label>
+                    <input type="password" id="signupPassword" placeholder="Create password (min 6 chars)" required>
+                </div>
+                <button class="btn btn-primary btn-full" id="signupSubmit">Sign Up</button>
+                <p class="auth-switch">Already have an account? <a href="#" id="showLogin">Login</a></p>
             </div>
         </div>
-    </section>
-    </main>
-</body>
-<script src="script.js"></script>
+    </div>
 
+    <section class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="line line1">Craving something amazing?</h1>
+            <h2 class="line line2">Let&#39;s find it. Let&#39;s cook it. Let&#39;s enjoy it.</h2>
+            <p class="line line3">Only on Telescript &mdash; where every recipe tells a story</p>
+            <form class="search-form" id="searchForm">
+                <div class="search-wrapper">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" placeholder="Search for recipes... e.g. pasta, chicken, cake" class="searchBox">
+                    <button type="submit" class="searchBtn"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <main>
+        <section class="section-recipes" id="recipes">
+            <div class="recipe-container">
+                <div class="empty-state">
+                    <img src="assets/images/chef.png" alt="Chef illustration" width="280">
+                    <h2>Search your favourite recipes</h2>
+                    <p>Type a dish name above and hit search to get started!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-favourites" id="favourites" style="display:none;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-heart"></i> Your Favourites</h2>
+            </div>
+            <div class="favourites-container"></div>
+        </section>
+    </main>
+
+    <div class="recipe-details-overlay" id="recipeOverlay">
+        <div class="recipe-details">
+            <button type="button" class="recipe-close-btn" id="recipeCloseBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="recipe-details-content"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast"></div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <img src="assets/images/recipelogo.jpg" alt="Logo" />
+                <span>Telescript</span>
+            </div>
+            <p>Made with <i class="fa-solid fa-heart" style="color:#e74c3c"></i> by Rajnish</p>
+            <div class="footer-links">
+                <a href="#"><i class="fa-brands fa-github"></i></a>
+                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>
