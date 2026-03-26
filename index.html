@@ -11,10 +11,12 @@
     <header>
         <nav>
             <img src="assets/images/recipelogo.jpg" alt="logo" width="100px" height="97px"/>
+            <h2>Recipe Finder</h2>
            
     <form>
         <input type="text" placeholder="search for recipes....." class="searchBox">
         <button type="submit" class="searchBtn">Search</button>
+        <button onclick="logout()">Logout</button>
     </form>
         </nav>
         <div class="splash-container">
@@ -41,6 +43,11 @@
         </div>
     </section>
     </main>
+    <script>
+        if(localStorage.getItem("isLoggedIn")!=="true"){
+        window.location.href="login.html";
+        }
+        </script>
 </body>
 <script src="script.js"></script>
 
