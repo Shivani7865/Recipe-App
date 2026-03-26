@@ -20,3 +20,24 @@ https://shivani7865.github.io/Recipe-App/
 - index.html
 - style.css
 - script.js
+
+## 📸 Screenshots
+
+<p align="center">
+  <img src="assets/images/home.png" width="700"/>
+</p>
+
+<p align="center">
+  <img src="assets/images/search.png" width="700"/>
+</p>
+
+<p align="center">
+  <img src="assets/images/resultpage.png" width="700"/>
+</p>
+<p align="center">
+  <img src="assets/images/result2.png" width="700"/>
+</p>
+
+<p align="center">
+  <img src="assets/images/result3.png" width="700"/>
+</p>
