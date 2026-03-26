@@ -14,7 +14,7 @@ A simple recipe search web app using TheMealDB API.
 - API: TheMealDB
 
 ## 🔗 Live Demo
-
+https://shivani7865.github.io/Recipe-App/
 
 ## 📂 Project Structure
 - index.html
