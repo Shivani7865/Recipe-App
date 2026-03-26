@@ -24,7 +24,7 @@ https://shivani7865.github.io/Recipe-App/
 ## 📸 Screenshots
 
 <p align="center">
-  <img src="assets/images/home.png" width="700"/>
+  <img src="assets/images/Home.png" width="700"/>
 </p>
 
 <p align="center">
