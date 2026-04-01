@@ -14,14 +14,37 @@
         <nav class="navbar">
             <div class="nav-brand">
                 <img src="assets/images/recipelogo.jpg" alt="Telescript Logo" />
-                <span class="brand-name">Telescript</span>
+                <span class="brand-name">Recipe-Finder</span>
             </div>
             <ul class="nav-links" id="navLinks">
                 <li><a href="#home" class="nav-link active" data-section="home"><i class="fa-solid fa-house"></i> Home</a></li>
                 <li><a href="#recipes" class="nav-link" data-section="recipes"><i class="fa-solid fa-utensils"></i> Recipes</a></li>
                 <li><a href="#favourites" class="nav-link" data-section="favourites"><i class="fa-solid fa-heart"></i> Favourites</a></li>
+                <li><a href="#history" class="nav-link" data-section="history"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
             </ul>
             <div class="nav-actions">
+                <div class="language-selector">
+                    <button class="btn btn-language" id="langToggle" title="Change Language"><i class="fa-solid fa-language"></i> <span id="currentLangLabel">EN</span></button>
+                    <div class="language-dropdown" id="langDropdown">
+                        <button class="lang-option active" data-lang="en">🇬🇧 English</button>
+                        <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी (Hindi)</button>
+                        <button class="lang-option" data-lang="te">🇮🇳 తెలుగు (Telugu)</button>
+                        <button class="lang-option" data-lang="ta">🇮🇳 தமிழ் (Tamil)</button>
+                        <button class="lang-option" data-lang="bn">🇮🇳 বাংলা (Bengali)</button>
+                        <button class="lang-option" data-lang="mr">🇮🇳 मराठी (Marathi)</button>
+                        <button class="lang-option" data-lang="gu">🇮🇳 ગુજરાતી (Gujarati)</button>
+                        <button class="lang-option" data-lang="kn">🇮🇳 ಕನ್ನಡ (Kannada)</button>
+                        <button class="lang-option" data-lang="ml">🇮🇳 മലയാളം (Malayalam)</button>
+                        <button class="lang-option" data-lang="pa">🇮🇳 ਪੰਜਾਬੀ (Punjabi)</button>
+                        <button class="lang-option" data-lang="ur">🇵🇰 اردو (Urdu)</button>
+                        <button class="lang-option" data-lang="es">🇪🇸 Español (Spanish)</button>
+                        <button class="lang-option" data-lang="fr">🇫🇷 Français (French)</button>
+                        <button class="lang-option" data-lang="ar">🇸🇦 العربية (Arabic)</button>
+                        <button class="lang-option" data-lang="zh">🇨🇳 中文 (Chinese)</button>
+                        <button class="lang-option" data-lang="ja">🇯🇵 日本語 (Japanese)</button>
+                    </div>
+                </div>
+                <button class="btn btn-darkmode" id="darkModeToggle" title="Toggle Light/Dark Mode"><i class="fa-solid fa-moon"></i></button>
                 <div class="user-greeting" id="userGreeting" style="display:none;">
                     <span class="greeting-text" id="greetingText"></span>
                     <button class="btn btn-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
@@ -79,15 +102,55 @@
             <form class="search-form" id="searchForm">
                 <div class="search-wrapper">
                     <i class="fa-solid fa-magnifying-glass search-icon"></i>
-                    <input type="text" placeholder="Search for recipes... e.g. pasta, chicken, cake" class="searchBox">
+                    <input type="text" placeholder="Search for recipes... e.g. biryani, pasta, dal, paneer" class="searchBox" autocomplete="off">
+                    <button type="button" class="voice-search-btn" id="voiceSearchBtn" title="Search by voice"><i class="fa-solid fa-microphone"></i></button>
                     <button type="submit" class="searchBtn"><i class="fa-solid fa-arrow-right"></i></button>
+                    <div class="search-autocomplete" id="searchAutocomplete" style="display:none;"></div>
                 </div>
             </form>
+            <div class="cuisine-browse">
+                <p class="cuisine-browse-label"><i class="fa-solid fa-fire"></i> Browse by Cuisine</p>
+                <div class="cuisine-chips" id="cuisineChips">
+                    <button class="cuisine-chip" data-area="Indian"><span class="cuisine-emoji">🍛</span> Indian</button>
+                    <button class="cuisine-chip" data-area="Italian"><span class="cuisine-emoji">🍝</span> Italian</button>
+                    <button class="cuisine-chip" data-area="Chinese"><span class="cuisine-emoji">🥡</span> Chinese</button>
+                    <button class="cuisine-chip" data-area="Mexican"><span class="cuisine-emoji">🌮</span> Mexican</button>
+                    <button class="cuisine-chip" data-area="Japanese"><span class="cuisine-emoji">🍣</span> Japanese</button>
+                    <button class="cuisine-chip" data-area="Thai"><span class="cuisine-emoji">🍲</span> Thai</button>
+                    <button class="cuisine-chip" data-area="French"><span class="cuisine-emoji">🥖</span> French</button>
+                    <button class="cuisine-chip" data-area="American"><span class="cuisine-emoji">🍔</span> American</button>
+                    <button class="cuisine-chip" data-area="British"><span class="cuisine-emoji">🐟</span> British</button>
+                    <button class="cuisine-chip" data-area="Greek"><span class="cuisine-emoji">🫒</span> Greek</button>
+                    <button class="cuisine-chip" data-area="Spanish"><span class="cuisine-emoji">🥘</span> Spanish</button>
+                    <button class="cuisine-chip" data-area="Turkish"><span class="cuisine-emoji">🧆</span> Turkish</button>
+                    <button class="cuisine-chip" data-area="Moroccan"><span class="cuisine-emoji">🫕</span> Moroccan</button>
+                    <button class="cuisine-chip" data-area="Malaysian"><span class="cuisine-emoji">🍜</span> Malaysian</button>
+                    <button class="cuisine-chip" data-area="Vietnamese"><span class="cuisine-emoji">🍜</span> Vietnamese</button>
+                    <button class="cuisine-chip" data-area="Filipino"><span class="cuisine-emoji">🥘</span> Filipino</button>
+                    <button class="cuisine-chip" data-area="Korean"><span class="cuisine-emoji">🥢</span> Korean</button>
+                    <button class="cuisine-chip" data-area="Egyptian"><span class="cuisine-emoji">🫓</span> Egyptian</button>
+                </div>
+            </div>
         </div>
     </section>
 
     <main>
         <section class="section-recipes" id="recipes">
+            <div class="filter-bar" id="filterBar" style="display:none;">
+                <div class="filter-group">
+                    <label><i class="fa-solid fa-earth-americas"></i> Cuisine</label>
+                    <select id="filterArea" class="filter-select">
+                        <option value="">All Cuisines</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label><i class="fa-solid fa-tag"></i> Category</label>
+                    <select id="filterCategory" class="filter-select">
+                        <option value="">All Categories</option>
+                    </select>
+                </div>
+                <button class="btn btn-clear-filters" id="clearFiltersBtn"><i class="fa-solid fa-filter-circle-xmark"></i> Clear</button>
+            </div>
             <div class="recipe-container">
                 <div class="empty-state">
                     <img src="assets/images/chef.png" alt="Chef illustration" width="280">
@@ -102,6 +165,14 @@
                 <h2><i class="fa-solid fa-heart"></i> Your Favourites</h2>
             </div>
             <div class="favourites-container"></div>
+        </section>
+
+        <section class="section-history" id="history" style="display:none;">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-clock-rotate-left"></i> Recently Viewed</h2>
+                <button class="btn btn-clear-history" id="clearHistoryBtn"><i class="fa-solid fa-trash"></i> Clear History</button>
+            </div>
+            <div class="history-container"></div>
         </section>
     </main>
 
@@ -120,15 +191,16 @@
         <div class="footer-content">
             <div class="footer-brand">
                 <img src="assets/images/recipelogo.jpg" alt="Logo" />
-                <span>Telescript</span>
+                <span>Recipe-Finder</span>
+                
             </div>
-            <p>Made with <i class="fa-solid fa-heart" style="color:#e74c3c"></i> by Rajnish</p>
-            <div class="footer-links">
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            </div>
+            <p class="copy-right">© 2026 Recipe App. All Rights Reserved.</p>
+            <p>Made with <i class="fa-solid fa-heart" style="color:#e74c3c"></i> by Shivani</p>
+         
         </div>
+        
+           
+       
     </footer>
 
     <script src="script.js"></script>
