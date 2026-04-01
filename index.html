@@ -11,47 +11,13 @@
 </head>
 <body>
     <header>
-        <nav class="navbar">
-            <div class="nav-brand">
-                <img src="assets/images/recipelogo.jpg" alt="Telescript Logo" />
-                <span class="brand-name">Recipe-Finder</span>
-            </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="nav-link active" data-section="home"><i class="fa-solid fa-house"></i> Home</a></li>
-                <li><a href="#recipes" class="nav-link" data-section="recipes"><i class="fa-solid fa-utensils"></i> Recipes</a></li>
-                <li><a href="#favourites" class="nav-link" data-section="favourites"><i class="fa-solid fa-heart"></i> Favourites</a></li>
-                <li><a href="#history" class="nav-link" data-section="history"><i class="fa-solid fa-clock-rotate-left"></i> History</a></li>
-            </ul>
-            <div class="nav-actions">
-                <div class="language-selector">
-                    <button class="btn btn-language" id="langToggle" title="Change Language"><i class="fa-solid fa-language"></i> <span id="currentLangLabel">EN</span></button>
-                    <div class="language-dropdown" id="langDropdown">
-                        <button class="lang-option active" data-lang="en">🇬🇧 English</button>
-                        <button class="lang-option" data-lang="hi">🇮🇳 हिन्दी (Hindi)</button>
-                        <button class="lang-option" data-lang="te">🇮🇳 తెలుగు (Telugu)</button>
-                        <button class="lang-option" data-lang="ta">🇮🇳 தமிழ் (Tamil)</button>
-                        <button class="lang-option" data-lang="bn">🇮🇳 বাংলা (Bengali)</button>
-                        <button class="lang-option" data-lang="mr">🇮🇳 मराठी (Marathi)</button>
-                        <button class="lang-option" data-lang="gu">🇮🇳 ગુજરાતી (Gujarati)</button>
-                        <button class="lang-option" data-lang="kn">🇮🇳 ಕನ್ನಡ (Kannada)</button>
-                        <button class="lang-option" data-lang="ml">🇮🇳 മലയാളം (Malayalam)</button>
-                        <button class="lang-option" data-lang="pa">🇮🇳 ਪੰਜਾਬੀ (Punjabi)</button>
-                        <button class="lang-option" data-lang="ur">🇵🇰 اردو (Urdu)</button>
-                        <button class="lang-option" data-lang="es">🇪🇸 Español (Spanish)</button>
-                        <button class="lang-option" data-lang="fr">🇫🇷 Français (French)</button>
-                        <button class="lang-option" data-lang="ar">🇸🇦 العربية (Arabic)</button>
-                        <button class="lang-option" data-lang="zh">🇨🇳 中文 (Chinese)</button>
-                        <button class="lang-option" data-lang="ja">🇯🇵 日本語 (Japanese)</button>
-                    </div>
-                </div>
-                <button class="btn btn-darkmode" id="darkModeToggle" title="Toggle Light/Dark Mode"><i class="fa-solid fa-moon"></i></button>
-                <div class="user-greeting" id="userGreeting" style="display:none;">
-                    <span class="greeting-text" id="greetingText"></span>
-                    <button class="btn btn-logout" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</button>
-                </div>
-                <button class="btn btn-login" id="loginBtn"><i class="fa-solid fa-user"></i> Login</button>
-                <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
-            </div>
+        <nav>
+            <img src="assets/images/recipelogo.jpg" alt="logo" width="100px" height="97px"/>
+           
+    <form>
+        <input type="text" placeholder="search for recipes....." class="searchBox">
+        <button type="submit" class="searchBtn">Search</button>
+    </form>
         </nav>
     </header>
 
@@ -198,11 +164,7 @@
             <p>Made with <i class="fa-solid fa-heart" style="color:#e74c3c"></i> by Shivani</p>
          
         </div>
-        
-           
-       
-    </footer>
-
-    <script src="script.js"></script>
+    </section>
+    </main>
 </body>
 </html>
